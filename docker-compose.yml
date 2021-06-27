@@ -1,0 +1,13 @@
+version: "3"
+services:
+  bastion:
+    image: cloudposse/bastion:latest
+    container_name: bastion
+    environment:
+      - TZ=Australia/Victoria
+      - MFA_PROVIDER=google-authenticator
+    volumes:
+      - ./.ssh:/root/.ssh
+    ports:
+      - '2222:22'
+    restart: unless-stopped
